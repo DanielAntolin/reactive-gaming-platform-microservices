@@ -42,15 +42,14 @@ Specify the paths for zookeeper-server-start.bat and kafka-server-start.bat in t
 
 ## 📁   Project Structure
 
-reactive-gaming-platform-microservices/
-├── api-gateway/          # Spring Cloud Gateway
-├── auth-service/         # JWT Authentication
-├── games-service/        # Reactive Catalog
-├── eligibility-service/  # Kafka Processing
-├── scripts/
-│   └── RunKafkaScript.bat  # Kafka Management
-├── docker-compose.yml    # Containerized Services
-└── README.md             # Main Documentation
+* reactive-gaming-platform-microservices/
+* ├── api-gateway/          # Spring Cloud Gateway
+* ├── auth-service/         # JWT Authentication
+* ├── games-service/        # Reactive Catalog
+* ├── eligibility-service/  # Kafka Processing
+* ├── scripts/
+* │   └── RunKafkaScript.bat  # Kafka Management
+* └── README.md             # Main Documentation
 
 ## 🛠 Recommended Tools
 For managing and monitoring Kafka topics, we recommend using Offset Explorer. This tool provides an intuitive UI for viewing topics, partitions, offsets, and consumer groups, making it easier to debug and analyze Kafka streams efficiently.
