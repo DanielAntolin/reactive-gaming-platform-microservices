@@ -1,0 +1,53 @@
+
+server:
+  port: 8084
+spring:
+  data:
+    r2dbc:
+      repositories:
+        enabled: true
+  r2dbc:
+    url: r2dbc:postgresql://localhost:5432/project3
+    username: postgres
+    password: 1234
+    pool:
+      enabled: true
+  cloud:
+    function:
+      definition:  gameCreatedBinding
+    stream:
+      default-binder: kafka_default
+      bindings:
+        gameCreatedBinding-in-0:
+          destination: event.game-created
+          binder: kafka_default
+          useNativeDecoding: true
+        gameCreatedBinding-out-0:
+          destination: event.game-eligible
+          binder: kafka_default
+          useNativeDecoding: true
+      binders:
+        kafka_default:
+          type: kafka
+          environment:
+            spring:
+              cloud:
+                stream:
+                  kafka:
+                    default:
+                      consumer:
+                        configuration:
+                          session.timeout.ms: 10000
+                          max.poll.records: 10
+                      producer:
+                        compressionType: gzip
+                        configuration:
+                          max.request.size: 1048576
+                    binder:
+                      autoAddPartitions: true
+                      autoCreateTopics: true
+                      requiredAcks: -1
+                      minPartitionsCount: 3
+                      replicationFactor: 1
+                      serdeError: logAndContinue
+                      brokers: localhost:9092
