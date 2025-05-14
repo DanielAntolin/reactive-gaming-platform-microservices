@@ -1,0 +1,22 @@
+server:
+  port: 8081
+
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/project3
+    username: postgres
+    password: 1234
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+
+  loggin:
+    level:
+      org:
+        hibernate:
+          SQL: Debug
+
+
+jwt:
+  secret: dGVzdGtpdGFsa2RmZzM0NTY3ODkwYWJjZGVmZ2hpa2xsYW5vcWVyMTIzNDU2Nzg5MAsdlfsekuhfiuwesdkjfksuehfsekdfusdhbfgsdksfb
